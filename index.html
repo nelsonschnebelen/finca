@@ -362,9 +362,142 @@
       font-size: 11px;
       color: rgba(255,255,255,0.25);
     }
+
+    /* ─── AGE GATE ─── */
+    .age-gate {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.4s ease;
+    }
+
+    .age-gate.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .age-gate-box {
+      text-align: center;
+      padding: 40px 32px;
+      max-width: 420px;
+    }
+
+    .age-gate-logo {
+      height: 32px;
+      margin-bottom: 32px;
+    }
+
+    .age-gate-title {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .age-gate-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+
+    .age-gate-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .age-gate-btn {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .age-gate-yes {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .age-gate-yes:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(229,180,90,0.35);
+    }
+
+    .age-gate-no {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(168,154,136,0.3);
+    }
+
+    .age-gate-no:hover {
+      border-color: var(--muted);
+      color: var(--white);
+    }
+
+    .age-gate-deny {
+      text-align: center;
+      padding: 40px 32px;
+      max-width: 420px;
+      display: none;
+    }
+
+    .age-gate-deny p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    body.age-locked {
+      overflow: hidden;
+    }
   </style>
 </head>
-<body>
+<body class="age-locked">
+
+  <!-- ─── AGE GATE ─── -->
+  <div class="age-gate" id="ageGate">
+    <div class="age-gate-box" id="agePrompt">
+      <img src="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" alt="Finca" class="age-gate-logo">
+      <h2 class="age-gate-title">Are You 21 or Older?</h2>
+      <p class="age-gate-sub">You must be of legal drinking age to enter this site.</p>
+      <div class="age-gate-buttons">
+        <button class="age-gate-btn age-gate-yes" onclick="ageVerified()">Yes, I Am</button>
+        <button class="age-gate-btn age-gate-no" onclick="ageDenied()">No</button>
+      </div>
+    </div>
+    <div class="age-gate-deny" id="ageDeny">
+      <img src="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" alt="Finca" class="age-gate-logo">
+      <p>Sorry, you must be 21 or older to view this site.<br><br>Please visit <a href="https://finca.wine/" style="color:var(--gold);">finca.wine</a> for more information.</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      if (sessionStorage.getItem('finca_age_verified')) {
+        document.getElementById('ageGate').classList.add('hidden');
+        document.body.classList.remove('age-locked');
+        setTimeout(function() { document.getElementById('ageGate').style.display = 'none'; }, 400);
+      }
+    })();
+    function ageVerified() {
+      sessionStorage.setItem('finca_age_verified', 'true');
+      document.getElementById('ageGate').classList.add('hidden');
+      document.body.classList.remove('age-locked');
+      setTimeout(function() { document.getElementById('ageGate').style.display = 'none'; }, 400);
+    }
+    function ageDenied() {
+      document.getElementById('agePrompt').style.display = 'none';
+      document.getElementById('ageDeny').style.display = 'block';
+    }
+  </script>
 
   <!-- LOGO -->
   <nav class="topbar">
