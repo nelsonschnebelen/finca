@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Hour | Finca North Park - $10 Wines Daily</title>
+  <meta name="description" content="$10 wines, craft cocktails & chef-driven tapas. Happy Hour daily from open until 6PM, all day Thursdays. Walk in or reserve at Finca North Park, San Diego.">
+  <meta property="og:title" content="Happy Hour at Finca North Park — $10 Wines">
+  <meta property="og:description" content="$10 wines, craft cocktails & chef-driven tapas every day from open until 6PM. All day Thursdays. North Park, San Diego.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://finca.wine/happy-hour/">
+  <link rel="icon" href="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" type="image/png">
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '719377253366194');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+      content_name: 'Happy Hour Landing Page',
+      content_category: 'Happy Hour'
+    });
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=719377253366194&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    @font-face {
+      font-family: 'Gothic';
+      src: url('https://finca.wine/wp-content/uploads/2024/03/Gothic-BoldExt.otf') format('opentype');
+      font-weight: bold;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e5b45a;
+      --black: #120a0c;
+      --white: #ffffff;
+      --cream: #f0e6d6;
+      --muted: #a89a88;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .gothic {
+      font-family: 'Gothic', Impact, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ─── LOGO BAR ─── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      padding: 14px 24px;
+      background: rgba(18,10,12,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .topbar img { height: 26px; }
+
+    /* ─── HERO: FULL VIEWPORT IMMERSION ─── */
+    .hero {
+      position: relative;
+      height: 100vh; height: 100dvh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(18,10,12,0.45) 0%,
+        rgba(18,10,12,0.25) 35%,
+        rgba(18,10,12,0.70) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 580px;
+    }
+
+    .hero-offer {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: clamp(52px, 12vw, 88px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .hero-offer span {
+      display: block;
+      color: var(--gold);
+    }
+
+    .hero-tagline {
+      font-size: 17px;
+      color: var(--cream);
+      font-weight: 300;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .hero-when {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 32px;
+    }
+
+    .cta {
+      display: inline-block;
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      background: var(--gold);
+      padding: 18px 52px;
+      transition: all 0.25s ease;
+    }
+
+    .cta:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(229,180,90,0.35);
+    }
+
+    .hero-walkin {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ─── PROOF STRIP ─── */
+    .proof {
+      background: var(--gold);
+      padding: 16px 24px;
+      text-align: center;
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    /* ─── ATMOSPHERE PHOTOS ─── */
+    .vibes {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .vibes img {
+      width: 100%; height: 300px;
+      object-fit: cover; display: block;
+    }
+
+    @media (max-width: 640px) {
+      .vibes { grid-template-columns: 1fr 1fr; }
+      .vibes img { height: 200px; }
+      .vibes img:last-child { grid-column: 1 / -1; }
+    }
+
+    /* ─── WHAT'S POURING ─── */
+    .pouring {
+      background: var(--black);
+      padding: 72px 24px;
+      text-align: center;
+    }
+
+    .pouring-title {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: clamp(26px, 5vw, 38px);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .pouring-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+
+    .pours {
+      max-width: 700px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    @media (max-width: 500px) {
+      .pours { grid-template-columns: 1fr; }
+    }
+
+    .pour {
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(229,180,90,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pour-name {
+      font-size: 15px;
+      color: var(--cream);
+    }
+
+    .pour-price {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 15px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .menu-divider {
+      grid-column: 1 / -1;
+      padding: 20px 24px 8px;
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: left;
+      border-bottom: 1px solid rgba(229,180,90,0.25);
+    }
+
+    .pour-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .pour-left { flex: 1; }
+
+    /* ─── CLOSING CTA ─── */
+    .closer {
+      position: relative;
+      padding: 100px 24px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .closer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('daf50ff0-e67a-4b59-968f-1ed66192a5c5.jpg') center/cover no-repeat;
+      filter: brightness(0.3);
+    }
+
+    .closer-inner {
+      position: relative; z-index: 2;
+    }
+
+    .closer-headline {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: clamp(28px, 6vw, 48px);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    .closer-sub {
+      font-size: 16px;
+      color: var(--cream);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    /* ─── INFO FOOTER ─── */
+    .info {
+      background: var(--gold);
+      padding: 56px 24px 40px;
+    }
+
+    .info-grid {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .info-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    .info-label {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .info-block p {
+      font-size: 14px;
+      color: var(--black);
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    .info-block a {
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(18,10,12,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .info-block a:hover { border-color: var(--black); }
+
+    .footer {
+      background: var(--black);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .footer img { height: 20px; opacity: 0.4; }
+
+    .footer p {
+      margin-top: 8px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGO -->
+  <nav class="topbar">
+    <a href="https://finca.wine/"><img src="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" alt="Finca North Park"></a>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <video autoplay muted loop playsinline preload="auto" poster="daf50ff0-e67a-4b59-968f-1ed66192a5c5.jpg">
+      <source src="Happy Hour Gif.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1 class="hero-offer"><span>$10 Wines</span>Happy Hour</h1>
+      <p class="hero-tagline">Craft cocktails, chef-driven tapas & curated wines on the patio in North Park.</p>
+      <p class="hero-when">Every day from open &rsquo;til 6pm &bull; All day Thursdays</p>
+      <a href="https://finca.wine/reservations/" class="cta" id="cta-hero" onclick="fbq('track','Lead',{content_name:'Hero CTA'});">Reserve a Table</a>
+      <span class="hero-walkin">Walk-ins always welcome</span>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <div class="proof">
+    &#9733; Featured in Wine Spectator &nbsp;&bull;&nbsp; 4.7 Stars on Google &nbsp;&bull;&nbsp; North Park, San Diego
+  </div>
+
+  <!-- ATMOSPHERE -->
+  <div class="vibes">
+    <img src="daf50ff0-e67a-4b59-968f-1ed66192a5c5.jpg" alt="Wine toast at Finca North Park happy hour" loading="lazy">
+    <img src="Finca North Park - Food - Feb 2024-129.jpg" alt="Chef-driven tapas at Finca" loading="lazy">
+    <img src="Finca North Park - Food - Feb 2024-194.jpg" alt="Happy hour bites and cocktails" loading="lazy">
+  </div>
+
+  <!-- ─── WHAT'S POURING ─── -->
+  <section class="pouring">
+    <h2 class="pouring-title">What's Pouring</h2>
+    <p class="pouring-sub">Bar &amp; patio &mdash; every happy hour</p>
+
+    <div class="pours">
+      <div class="menu-divider">Drinks</div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">White Wine</span></div><span class="pour-price">$10</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Red Wine</span></div><span class="pour-price">$10</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Sparkling Wine</span></div><span class="pour-price">$10</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">House Vermouth</span></div><span class="pour-price">$10</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Gin &amp; Tonic</span></div><span class="pour-price">$10</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Earl Grey Gold Rush</span></div><span class="pour-price">$12</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Gin Gimlet</span></div><span class="pour-price">$12</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Dirty Vodka Martini</span></div><span class="pour-price">$12</span></div>
+
+      <div class="menu-divider">From the Kitchen</div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Ahi Tuna</span><p class="pour-desc">Avocado, achiote, lime leaf, pickled chiles</p></div><span class="pour-price">$18</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Vegetable Ceviche</span><p class="pour-desc">Cauliflower, avocado, cucumber, coconut milk</p></div><span class="pour-price">$16</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Poached Shrimp</span><p class="pour-desc">Agua chile, jalapeno, jicama, lime</p></div><span class="pour-price">$17</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Baja Crab</span><p class="pour-desc">Crispy green tomato, caper remoulade, dill</p></div><span class="pour-price">$17</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">1/2 Lb Steamers</span><p class="pour-desc">Chile broth, grilled sourdough, green onions</p></div><span class="pour-price">$22</span></div>
+      <div class="pour"><div class="pour-left"><span class="pour-name">Sirloin Steak Frites</span><p class="pour-desc">Steak sauce, sour cream &amp; onion hand cut fries</p></div><span class="pour-price">$24</span></div>
+    </div>
+  </section>
+
+  <!-- ─── CLOSING CTA ─── -->
+  <section class="closer">
+    <div class="closer-inner">
+      <h2 class="closer-headline">Grab a seat.<br>You're going to love it here.</h2>
+      <p class="closer-sub">Walk in or lock in your spot now.</p>
+      <a href="https://finca.wine/reservations/" class="cta" id="cta-closer" onclick="fbq('track','Lead',{content_name:'Closer CTA'});">Reserve a Table</a>
+    </div>
+  </section>
+
+  <!-- ─── INFO ─── -->
+  <section class="info">
+    <div class="info-grid">
+      <div class="info-block">
+        <p class="info-label">Happy Hour</p>
+        <p>Tue&ndash;Wed: 5&ndash;6PM<br>Thursday: All Day<br>Fri&ndash;Sat: 3&ndash;6PM</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">Hours</p>
+        <p>Tue&ndash;Thu: 5&ndash;9PM<br>Fri&ndash;Sat: 3&ndash;10PM<br>Sun: 3&ndash;9PM</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">Find Us</p>
+        <p><a href="https://maps.google.com/?q=3066+North+Park+Way+San+Diego+CA+92104" target="_blank" rel="noopener">3066 North Park Way<br>San Diego, CA 92104</a></p>
+        <p style="margin-top:6px;"><a href="tel:6192023564">619-202-3564</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a href="https://finca.wine/"><img src="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" alt="Finca"></a>
+    <p>&copy; 2026 Finca Wine</p>
+  </footer>
+
+</body>
+</html>
