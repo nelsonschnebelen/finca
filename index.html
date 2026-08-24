@@ -8,8 +8,8 @@
   <meta property="og:title" content="Private Events at Finca North Park">
   <meta property="og:description" content="Family-style prix fixe at $85/guest or mix-and-mingle at $65/guest. Sommelier pairings available. No room fees. North Park, San Diego.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://finca.wine/private-events/">
-  <link rel="icon" href="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" type="image/png">
+  <meta property="og:url" content="https://fincaprivateevents.netlify.app/">
+  <link rel="icon" href="finca-logo.png" type="image/png">
 
   <!-- Meta Pixel Code -->
   <script>
@@ -35,7 +35,7 @@
   <style>
     @font-face {
       font-family: 'Gothic';
-      src: url('https://finca.wine/wp-content/uploads/2024/03/Gothic-BoldExt.otf') format('opentype');
+      src: url('Gothic-BoldExt.otf') format('opentype');
       font-weight: bold;
       font-display: swap;
     }
@@ -406,10 +406,32 @@
     input[type="range"]:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
 
     .range-ends {
-      display: flex; justify-content: space-between;
+      display: flex; justify-content: space-between; gap: 8px;
       font-size: 11px; color: var(--muted);
       letter-spacing: 1px;
     }
+    .range-ends span:nth-child(2) { color: rgba(229,180,90,0.65); letter-spacing: 0.5px; }
+
+    .buyout {
+      display: none;
+      border: 1px solid var(--gold);
+      background: rgba(229,180,90,0.08);
+      padding: 16px 16px 14px;
+      margin-bottom: 20px;
+    }
+    .buyout.is-on { display: block; }
+
+    .buyout-title {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .buyout-body { font-size: 13px; line-height: 1.6; color: var(--cream); font-weight: 300; }
+
+    .estimate.is-buyout .estimate-total,
+    .estimate.is-buyout .estimate-per { opacity: 0.45; }
 
     /* estimate panel */
     .estimate {
@@ -748,6 +770,47 @@
 
     .date-picked.is-empty { color: var(--muted); }
 
+    /* time slots */
+    .slots-block { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line-soft); }
+
+    .slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .slot {
+      background: var(--panel);
+      border: 1px solid var(--line-soft);
+      color: var(--cream);
+      font-family: inherit;
+      font-size: 14px;
+      padding: 13px 8px;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .slot:hover { border-color: var(--gold); color: var(--gold); }
+    .slot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    .slot[aria-pressed="true"] {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    .slots-empty {
+      font-size: 14px; line-height: 1.6;
+      color: var(--muted); font-weight: 300;
+      margin-top: 12px;
+    }
+
+    .slots-note { font-size: 12px; line-height: 1.55; color: var(--muted); margin-top: 14px; }
+
     .date-grid { display: grid; grid-template-columns: auto 1fr; gap: 44px; align-items: start; }
     @media (max-width: 860px) {
       .date-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -957,7 +1020,7 @@
   -->
   <div class="age-gate" id="ageGate">
     <div class="age-gate-box" id="agePrompt">
-      <img src="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" alt="Finca" class="age-gate-logo">
+      <img src="finca-logo.png" alt="Finca" class="age-gate-logo">
       <h2 class="age-gate-title">Are You 21 or Older?</h2>
       <p class="age-gate-sub">You must be of legal drinking age to enter this site.</p>
       <div class="age-gate-buttons">
@@ -966,8 +1029,8 @@
       </div>
     </div>
     <div class="age-gate-deny" id="ageDeny">
-      <img src="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" alt="Finca" class="age-gate-logo">
-      <p>Sorry, you must be 21 or older to view this site.<br><br>Please visit <a href="https://finca.wine/" style="color:var(--gold);">finca.wine</a> for more information.</p>
+      <img src="finca-logo.png" alt="Finca" class="age-gate-logo">
+      <p>Sorry, you must be 21 or older to view this site.<br><br>Please visit <a href="https://fincanorthpark.com/" style="color:var(--gold);">fincanorthpark.com</a> for more information.</p>
     </div>
   </div>
 
@@ -994,7 +1057,7 @@
   <!-- ─── TOPBAR ─── -->
   <nav class="topbar">
     <span class="topbar-spacer"></span>
-    <a href="https://finca.wine/"><img src="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" alt="Finca North Park"></a>
+    <a href="https://fincanorthpark.com/"><img src="finca-logo.png" alt="Finca North Park"></a>
     <a href="#inquire" class="topbar-cta">Request a Proposal</a>
   </nav>
 
@@ -1066,10 +1129,10 @@
           <div class="build-step">
             <p class="build-label">02 &middot; The Headcount</p>
             <div class="guest-readout"><span id="guestNum">30</span> Guests</div>
-            <input type="range" id="guestRange" min="10" max="100" step="2" value="30"
+            <input type="range" id="guestRange" min="10" max="120" step="1" value="30"
                    aria-label="Number of guests" aria-valuetext="30 guests">
-            <div class="range-ends"><span>10</span><span>100+</span></div>
-            <p class="field-hint">Hosting more than 100, or looking at a complete buyout? Say so in the request below and we&rsquo;ll quote it directly.</p>
+            <div class="range-ends"><span>10</span><span>40 &middot; buyout above</span><span>120</span></div>
+            <p class="field-hint" id="guestHint">Parties of 10&ndash;40 book the room as normal.</p>
           </div>
 
           <!-- 03 ADD-ONS -->
@@ -1082,7 +1145,14 @@
         <!-- ESTIMATE -->
         <aside class="estimate">
           <span class="no-fee-flag">No room fee</span>
-          <p class="estimate-label">Your all-in estimate</p>
+          <div class="buyout" id="buyoutNotice" role="status">
+            <p class="buyout-title">Complete buyout required</p>
+            <p class="buyout-body">We can host up to 120, but a party this size takes the whole
+            restaurant. Send the request and our booking representative will contact you to
+            review pricing and options &mdash; the figure below covers food only and doesn&rsquo;t
+            include the buyout.</p>
+          </div>
+          <p class="estimate-label" id="estimateLabel">Your all-in estimate</p>
           <div aria-live="polite">
             <div class="estimate-total" id="estTotal">$3,297</div>
             <p class="estimate-per" id="estPer">$110 per guest, everything included</p>
@@ -1289,9 +1359,17 @@
         </div>
 
         <div class="date-side">
-          <p class="eyebrow">Your Date</p>
+          <p class="eyebrow">Your Date &amp; Time</p>
           <p class="date-picked is-empty" id="datePicked">No date selected</p>
-          <p class="section-sub">Any Tuesday through Sunday is open to request. Friday and Saturday nights go early &mdash; if the date you want is tight, tell us in the request and we&rsquo;ll work the calendar with you.</p>
+
+          <div class="slots-block">
+            <p class="eyebrow" style="margin-bottom:0;">Start Time</p>
+            <div class="slots" id="slotRow" role="group" aria-label="Choose a start time"></div>
+            <p class="slots-empty" id="slotEmpty">Pick a date first and we&rsquo;ll show the start times open that evening.</p>
+            <p class="slots-note" id="slotNote"></p>
+          </div>
+
+          <p class="section-sub" style="margin-top:24px;">Any Tuesday through Sunday is open to request. Friday and Saturday nights go early &mdash; if the date or time you want is tight, tell us in the request and we&rsquo;ll work the calendar with you.</p>
         </div>
       </div>
     </div>
@@ -1320,6 +1398,7 @@
           <div class="carry-line"><span>Guests</span><span id="cGuests">30</span></div>
           <div class="carry-line"><span>Add-ons</span><span id="cAddons">&mdash;</span></div>
           <div class="carry-line"><span>Date</span><span id="cDate">Not selected</span></div>
+          <div class="carry-line"><span>Start time</span><span id="cTime">Not selected</span></div>
           <div class="carry-line carry-total"><span>All-in estimate</span><span id="cTotal">$3,297</span></div>
         </aside>
 
@@ -1353,32 +1432,40 @@
               <input type="tel" id="fPhone" name="phone" autocomplete="tel">
             </div>
             <div class="field">
-              <label for="fDate">Preferred Date</label>
-              <input type="date" id="fDate" name="preferred_date">
-              <p class="field-hint">Set by the calendar above, or pick one here.</p>
+              <label for="fGuests">Party Size</label>
+              <input type="number" id="fGuests" name="guests" min="1" value="30">
+              <p class="field-hint">Carried from the builder &mdash; adjust if it&rsquo;s changed.</p>
             </div>
           </div>
 
           <div class="field-row">
             <div class="field">
-              <label for="fOccasion">Occasion</label>
-              <select id="fOccasion" name="occasion">
-                <option value="">Select&hellip;</option>
-                <option>Corporate / Company Dinner</option>
-                <option>Holiday Party</option>
-                <option>Milestone Birthday</option>
-                <option>Rehearsal Dinner</option>
-                <option>Engagement / Shower</option>
-                <option>Client Entertaining</option>
-                <option>Complete Buyout</option>
-                <option>Other</option>
-              </select>
+              <label for="fDate">Preferred Date</label>
+              <input type="date" id="fDate" name="preferred_date">
+              <p class="field-hint">Set by the calendar above, or pick one here.</p>
             </div>
             <div class="field">
-              <label for="fGuests">Party Size</label>
-              <input type="number" id="fGuests" name="guests" min="1" value="30">
-              <p class="field-hint">Carried from the builder &mdash; adjust if it&rsquo;s changed.</p>
+              <label for="fTime">Start Time</label>
+              <select id="fTime" name="preferred_time">
+                <option value="">Pick a date first&hellip;</option>
+              </select>
+              <p class="field-hint">Only times that fit your format inside that evening&rsquo;s service are listed.</p>
             </div>
+          </div>
+
+          <div class="field">
+            <label for="fOccasion">Occasion</label>
+            <select id="fOccasion" name="occasion">
+              <option value="">Select&hellip;</option>
+              <option>Corporate / Company Dinner</option>
+              <option>Holiday Party</option>
+              <option>Milestone Birthday</option>
+              <option>Rehearsal Dinner</option>
+              <option>Engagement / Shower</option>
+              <option>Client Entertaining</option>
+              <option>Complete Buyout</option>
+              <option>Other</option>
+            </select>
           </div>
 
           <div class="field">
@@ -1391,6 +1478,8 @@
           <input type="hidden" name="addons" id="hAddons">
           <input type="hidden" name="estimate_all_in" id="hTotal">
           <input type="hidden" name="estimate_per_guest" id="hPer">
+          <input type="hidden" name="date_and_time" id="hDateTime">
+          <input type="hidden" name="buyout_required" id="hBuyout">
           <input type="hidden" name="_subject" value="Private Event Request — Finca North Park">
           <div class="honey" aria-hidden="true">
             <label for="fCompanyUrl">Leave this blank</label>
@@ -1418,8 +1507,8 @@
     <div class="info-grid">
       <div class="info-block">
         <p class="info-label">Events</p>
-        <p><a href="tel:6192023564">619-202-3564</a></p>
-        <p style="margin-top:6px;">Tuesday&ndash;Sunday</p>
+        <p><a href="mailto:info@finca.wine">info@finca.wine</a></p>
+        <p style="margin-top:6px;"><a href="tel:6192023564">619-202-3564</a></p>
       </div>
       <div class="info-block">
         <p class="info-label">Hours</p>
@@ -1434,8 +1523,8 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <a href="https://finca.wine/"><img src="https://finca.wine/wp-content/uploads/2023/09/finca_logo02.png" alt="Finca"></a>
-    <p>&copy; 2026 Finca Wine &nbsp;&middot;&nbsp; <a href="https://finca.wine/happy-hour/">Happy Hour</a></p>
+    <a href="https://fincanorthpark.com/"><img src="finca-logo.png" alt="Finca"></a>
+    <p>&copy; 2026 Finca Wine &nbsp;&middot;&nbsp; <a href="https://fincanorthpark.com/">Happy Hour</a></p>
   </footer>
 
   <script>
@@ -1457,9 +1546,36 @@
     // In California a MANDATORY gratuity is itself taxable. Set to false to tax food only.
     var TAX_ON_GRATUITY = true;
 
-    var CLOSED_DAYS   = [1];  // 0=Sun … 6=Sat. Finca is dark on Mondays.
     var MIN_LEAD_DAYS = 0;    // raise to e.g. 7 to block dates inside the next week
+
+    // Parties of MIN..STANDARD_MAX book the room as normal. Above that and up to
+    // BUYOUT_MAX we can still host, but it takes a complete buyout, which is
+    // priced separately — so the page stops quoting an all-in number and hands
+    // the guest to a booking rep instead.
+    var MIN_GUESTS    = 10;
+    var STANDARD_MAX  = 40;
+    var BUYOUT_MAX    = 120;
     var MONTHS_AHEAD  = 12;   // how far forward the calendar will page
+
+    // Service window per weekday, in 24h "HH:MM". null = closed that day.
+    // Start times are generated from `open` up to (close − the format's duration),
+    // so the page never offers a start that couldn't finish before close.
+    var SERVICE_HOURS = {
+      0: { open: '15:00', close: '21:00' },  // Sunday
+      1: null,                               // Monday — closed
+      2: { open: '17:00', close: '21:00' },  // Tuesday
+      3: { open: '17:00', close: '21:00' },  // Wednesday
+      4: { open: '17:00', close: '21:00' },  // Thursday
+      5: { open: '15:00', close: '22:00' },  // Friday
+      6: { open: '15:00', close: '22:00' }   // Saturday
+    };
+
+    var SLOT_MINUTES = 30;   // spacing between offered start times
+
+    // How long each format occupies the room, in minutes.
+    // Mix & Mingle is the chef's stated 2 hours; the seated prix fixe is
+    // three courses, so it's budgeted at 3. Adjust to taste.
+    var DURATIONS = { prixfixe: 180, mingle: 120 };
 
     var FORMATS = {
       prixfixe: { label: 'Family-Style Prix Fixe', price: 85 },
@@ -1477,7 +1593,7 @@
 
     /* ══════════════════════════════════════════════════════════ */
 
-    var state = { format: 'prixfixe', guests: 30, addons: [], date: null };
+    var state = { format: 'prixfixe', guests: 30, addons: [], date: null, time: null };
 
     function $(id) { return document.getElementById(id); }
     function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
@@ -1547,6 +1663,17 @@
       $('guestNum').textContent = state.guests;
       $('guestRange').setAttribute('aria-valuetext', state.guests + ' guests');
 
+      var buyout = state.guests > STANDARD_MAX;
+      $('buyoutNotice').classList.toggle('is-on', buyout);
+      document.querySelector('.estimate').classList.toggle('is-buyout', buyout);
+      $('estimateLabel').textContent = buyout ? 'Food estimate — buyout quoted separately'
+                                              : 'Your all-in estimate';
+      $('guestHint').innerHTML = buyout
+        ? 'Over 40 guests takes a complete buyout — we can host up to ' + BUYOUT_MAX + '. ' +
+          'Send the request and a booking representative will contact you with pricing.'
+        : 'Parties of ' + MIN_GUESTS + '–' + STANDARD_MAX + ' book the room as normal.';
+      $('hBuyout').value = buyout ? 'YES — over ' + STANDARD_MAX + ' guests, needs a complete buyout' : 'No';
+
       $('estTotal').textContent = money(c.total);
       $('estPer').textContent = money(c.per) + ' per guest, everything included';
 
@@ -1590,6 +1717,7 @@
         });
         renderAddons();
         render();
+        renderSlots();
       });
     });
 
@@ -1602,7 +1730,7 @@
       var n = parseInt(e.target.value, 10);
       if (!isNaN(n) && n > 0) {
         state.guests = n;
-        if (n >= 10 && n <= 100) { $('guestRange').value = n; }
+        if (n >= MIN_GUESTS && n <= BUYOUT_MAX) { $('guestRange').value = n; }
         render();
       }
     });
@@ -1638,13 +1766,125 @@
       return MONTH_NAMES[d.getMonth()].slice(0, 3) + ' ' + d.getDate() + ', ' + d.getFullYear();
     }
 
+    /* ─── TIME SLOTS ─── */
+
+    function toMinutes(hm) {
+      var p = hm.split(':');
+      return (+p[0]) * 60 + (+p[1]);
+    }
+
+    function toHM(mins) {
+      var h = Math.floor(mins / 60), m = mins % 60;
+      return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    }
+
+    function prettyTime(hm) {
+      var mins = toMinutes(hm);
+      var h = Math.floor(mins / 60), m = mins % 60;
+      var suffix = h >= 12 ? 'PM' : 'AM';
+      var h12 = h % 12; if (h12 === 0) { h12 = 12; }
+      return h12 + ':' + (m < 10 ? '0' : '') + m + ' ' + suffix;
+    }
+
+    // Start times that fit the chosen format inside that weekday's service window.
+    function slotsFor(dateStr, format) {
+      if (!dateStr) { return []; }
+      var p = dateStr.split('-');
+      var dow = new Date(+p[0], +p[1] - 1, +p[2]).getDay();
+      var win = SERVICE_HOURS[dow];
+      if (!win) { return []; }
+
+      var duration = DURATIONS[format] || 0;
+      var first = toMinutes(win.open);
+      var last  = toMinutes(win.close) - duration;
+
+      var out = [];
+      for (var t = first; t <= last; t += SLOT_MINUTES) { out.push(toHM(t)); }
+      return out;
+    }
+
+    function renderSlots() {
+      var slots = slotsFor(state.date, state.format);
+      var row = $('slotRow');
+      var sel = $('fTime');
+
+      // a time that no longer fits the day or the format is dropped
+      if (state.time && slots.indexOf(state.time) === -1) { state.time = null; }
+
+      row.innerHTML = '';
+      sel.innerHTML = '';
+
+      if (!slots.length) {
+        $('slotEmpty').style.display = 'block';
+        $('slotEmpty').textContent = state.date
+          ? 'That evening can’t fit this format inside service. Try another date, or tell us in the request.'
+          : 'Pick a date first and we’ll show the start times open that evening.';
+        $('slotNote').textContent = '';
+        sel.appendChild(new Option('Pick a date first…', ''));
+        syncTime();
+        return;
+      }
+
+      $('slotEmpty').style.display = 'none';
+
+      var placeholder = new Option('Select…', '');
+      sel.appendChild(placeholder);
+
+      slots.forEach(function (hm) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot';
+        btn.textContent = prettyTime(hm);
+        btn.setAttribute('aria-pressed', state.time === hm ? 'true' : 'false');
+        btn.addEventListener('click', function () {
+          state.time = (state.time === hm) ? null : hm;
+          renderSlots();
+        });
+        row.appendChild(btn);
+
+        var opt = new Option(prettyTime(hm), hm);
+        if (state.time === hm) { opt.selected = true; }
+        sel.appendChild(opt);
+      });
+
+      var hrs = (DURATIONS[state.format] || 0) / 60;
+      $('slotNote').textContent = 'Start times for a ' + hrs + '-hour ' +
+        FORMATS[state.format].label.toLowerCase() + '. Need something outside these? Ask in the request.';
+
+      syncTime();
+    }
+
+    // push the chosen time out to the headline, the carry panel and the form
+    function syncTime() {
+      var label = state.time ? prettyTime(state.time) : null;
+      $('cTime').textContent = label || 'Not selected';
+      $('fTime').value = state.time || '';
+
+      if (state.date) {
+        var p = state.date.split('-');
+        var d = new Date(+p[0], +p[1] - 1, +p[2]);
+        $('datePicked').textContent = longDate(d) + (label ? ' · ' + label : '');
+        $('datePicked').classList.remove('is-empty');
+      } else {
+        $('datePicked').textContent = 'No date selected';
+        $('datePicked').classList.add('is-empty');
+      }
+      $('hDateTime').value = (state.date ? shortDate(new Date(
+        +state.date.split('-')[0], +state.date.split('-')[1] - 1, +state.date.split('-')[2]
+      )) : 'Not set') + (label ? ' at ' + label : '');
+    }
+
     function selectDate(d) {
       state.date = iso(d);
       $('fDate').value = state.date;
-      $('datePicked').textContent = longDate(d);
-      $('datePicked').classList.remove('is-empty');
       $('cDate').textContent = shortDate(d);
+      renderSlots();
     }
+
+    $('fTime').addEventListener('change', function (e) {
+      state.time = e.target.value || null;
+      renderSlots();
+    });
 
     function renderCal() {
       $('calMonth').textContent = MONTH_NAMES[view.getMonth()] + ' ' + view.getFullYear();
@@ -1669,7 +1909,7 @@
     }
 
     function makeDay(dt) {
-      var closed  = CLOSED_DAYS.indexOf(dt.getDay()) !== -1;
+      var closed  = !SERVICE_HOURS[dt.getDay()];
       var tooSoon = dt < earliest;
       var key = iso(dt);
 
@@ -1740,13 +1980,14 @@
           'Name: ' + $('fName').value,
           'Email: ' + $('fEmail').value,
           'Phone: ' + $('fPhone').value,
-          'Preferred date: ' + ($('fDate').value || 'Not set'),
+          'Preferred date & time: ' + $('hDateTime').value,
           'Occasion: ' + ($('fOccasion').value || 'Not set'),
           'Party size: ' + $('fGuests').value,
           '',
           'Format: ' + $('hFormat').value,
           'Add-ons: ' + $('hAddons').value,
           'All-in estimate: ' + $('hTotal').value + ' — ' + $('hPer').value + '/guest',
+          'Complete buyout required: ' + $('hBuyout').value,
           '',
           'Notes:',
           $('fNotes').value
@@ -1785,6 +2026,7 @@
     renderAddons();
     render();
     renderCal();
+    renderSlots();
   })();
   </script>
 
