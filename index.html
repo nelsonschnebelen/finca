@@ -485,6 +485,16 @@
     }
     .est-line.est-strong span:last-child { color: var(--gold); font-size: 16px; }
 
+    .est-when {
+      font-family: 'Gothic', Impact, sans-serif;
+      font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--gold);
+      border-top: 1px solid var(--line-soft);
+      margin-top: 14px; padding-top: 14px;
+      line-height: 1.45;
+    }
+    .est-when.is-empty { color: var(--muted); }
+
     .estimate .cta { display: block; width: 100%; text-align: center; margin-top: 20px; padding: 17px 20px; }
 
     .estimate-fine {
@@ -673,7 +683,6 @@
     .std-body { font-size: 14px; line-height: 1.65; color: var(--cream); font-weight: 300; }
 
     /* ─── CALENDAR ─── */
-    .datesec { background: var(--black); }
 
     .cal {
       max-width: 460px;
@@ -811,11 +820,14 @@
 
     .slots-note { font-size: 12px; line-height: 1.55; color: var(--muted); margin-top: 14px; }
 
-    .date-grid { display: grid; grid-template-columns: auto 1fr; gap: 44px; align-items: start; }
-    @media (max-width: 860px) {
-      .date-grid { grid-template-columns: 1fr; gap: 32px; }
-      .cal { max-width: 100%; }
+    .date-grid { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: 28px; align-items: start; }
+    @media (max-width: 1080px) {
+      .date-grid { grid-template-columns: 1fr; gap: 26px; }
     }
+    .date-grid .cal { max-width: 100%; padding: 18px; }
+    .date-grid .date-side { justify-content: flex-start; }
+    .date-grid .slots-block { margin-top: 0; padding-top: 0; border-top: none; }
+    .date-grid .date-picked { margin-bottom: 18px; }
 
     /* ─── GALLERY ─── */
     .vibes { display: grid; grid-template-columns: 1fr 1fr 1fr; }
@@ -1101,7 +1113,7 @@
       <div class="section-head">
         <p class="eyebrow">Build It Here</p>
         <h2 class="section-title">Your all-in number,<br>in thirty seconds.</h2>
-        <p class="section-sub">Pick the format, the headcount and the pours. What you see below is the whole number &mdash; food, the 20% gratuity, and sales tax. No room fee, no surprise line items.</p>
+        <p class="section-sub">Pick the format, the headcount, the pours and your date. What you see is the whole number &mdash; food, the 20% gratuity, and sales tax. No room fee, no surprise line items. Everything you choose here carries straight into the request form.</p>
       </div>
 
       <div class="builder-grid">
@@ -1140,6 +1152,44 @@
             <p class="build-label">03 &middot; From the Cellar <small>Optional</small></p>
             <div class="opt-row" id="addonRow" role="group" aria-label="Optional add-ons"></div>
           </div>
+
+          <!-- 04 DATE & TIME -->
+          <div class="build-step">
+            <p class="build-label">04 &middot; The Date <small>We host Tuesday&ndash;Sunday</small></p>
+
+            <div class="date-grid">
+              <div class="cal">
+                <div class="cal-top">
+                  <button type="button" class="cal-nav" id="calPrev" aria-label="Previous month">&#8249;</button>
+                  <div class="cal-month" id="calMonth" aria-live="polite">Month</div>
+                  <button type="button" class="cal-nav" id="calNext" aria-label="Next month">&#8250;</button>
+                </div>
+                <div class="cal-dows" aria-hidden="true">
+                  <div class="cal-dow">Su</div><div class="cal-dow">Mo</div><div class="cal-dow">Tu</div>
+                  <div class="cal-dow">We</div><div class="cal-dow">Th</div><div class="cal-dow">Fr</div>
+                  <div class="cal-dow">Sa</div>
+                </div>
+                <div class="cal-days" id="calDays"></div>
+                <div class="cal-legend">
+                  <span><i class="swatch swatch-open" aria-hidden="true"></i> Available</span>
+                  <span><i class="swatch swatch-closed" aria-hidden="true"></i> Closed Mondays</span>
+                </div>
+              </div>
+
+              <div class="date-side">
+                <p class="date-picked is-empty" id="datePicked">No date selected</p>
+
+                <div class="slots-block">
+                  <p class="eyebrow" style="margin-bottom:0;">Start Time</p>
+                  <div class="slots" id="slotRow" role="group" aria-label="Choose a start time"></div>
+                  <p class="slots-empty" id="slotEmpty">Pick a date first and we&rsquo;ll show the start times open that evening.</p>
+                  <p class="slots-note" id="slotNote"></p>
+                </div>
+              </div>
+            </div>
+
+            <p class="field-hint" style="margin-top:18px;">Friday and Saturday nights go early. If the date or time you want is tight, say so in the request and we&rsquo;ll work the calendar with you.</p>
+          </div>
         </div>
 
         <!-- ESTIMATE -->
@@ -1158,6 +1208,7 @@
             <p class="estimate-per" id="estPer">$110 per guest, everything included</p>
             <div class="est-lines" id="estLines"></div>
           </div>
+          <p class="est-when is-empty" id="estWhen">No date selected yet</p>
           <a href="#inquire" class="cta" onclick="fbq('track','Lead',{content_name:'Estimate CTA'});">Request This Evening</a>
           <p class="estimate-fine">The only additions are the 20% gratuity and California sales tax, both shown above. Final menu is set with the chef.</p>
         </aside>
@@ -1331,49 +1382,6 @@
   </section>
 
   <!-- ─── DATE ─── -->
-  <section class="datesec" id="date">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Pick Your Date</p>
-        <h2 class="section-title">Find your night.</h2>
-        <p class="section-sub">We host Tuesday through Sunday. Choose a date and it carries straight into the request below &mdash; we&rsquo;ll confirm availability when we reply.</p>
-      </div>
-
-      <div class="date-grid">
-        <div class="cal">
-          <div class="cal-top">
-            <button type="button" class="cal-nav" id="calPrev" aria-label="Previous month">&#8249;</button>
-            <div class="cal-month" id="calMonth" aria-live="polite">Month</div>
-            <button type="button" class="cal-nav" id="calNext" aria-label="Next month">&#8250;</button>
-          </div>
-          <div class="cal-dows" aria-hidden="true">
-            <div class="cal-dow">Su</div><div class="cal-dow">Mo</div><div class="cal-dow">Tu</div>
-            <div class="cal-dow">We</div><div class="cal-dow">Th</div><div class="cal-dow">Fr</div>
-            <div class="cal-dow">Sa</div>
-          </div>
-          <div class="cal-days" id="calDays"></div>
-          <div class="cal-legend">
-            <span><i class="swatch swatch-open" aria-hidden="true"></i> Available to request</span>
-            <span><i class="swatch swatch-closed" aria-hidden="true"></i> Closed Mondays</span>
-          </div>
-        </div>
-
-        <div class="date-side">
-          <p class="eyebrow">Your Date &amp; Time</p>
-          <p class="date-picked is-empty" id="datePicked">No date selected</p>
-
-          <div class="slots-block">
-            <p class="eyebrow" style="margin-bottom:0;">Start Time</p>
-            <div class="slots" id="slotRow" role="group" aria-label="Choose a start time"></div>
-            <p class="slots-empty" id="slotEmpty">Pick a date first and we&rsquo;ll show the start times open that evening.</p>
-            <p class="slots-note" id="slotNote"></p>
-          </div>
-
-          <p class="section-sub" style="margin-top:24px;">Any Tuesday through Sunday is open to request. Friday and Saturday nights go early &mdash; if the date or time you want is tight, tell us in the request and we&rsquo;ll work the calendar with you.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ─── GALLERY ─── -->
   <div class="vibes">
@@ -1869,6 +1877,17 @@
         $('datePicked').textContent = 'No date selected';
         $('datePicked').classList.add('is-empty');
       }
+      var when = $('estWhen');
+      if (state.date) {
+        var pp = state.date.split('-');
+        var dd = new Date(+pp[0], +pp[1] - 1, +pp[2]);
+        when.textContent = longDate(dd) + (label ? ' · ' + label : ' · pick a start time');
+        when.classList.toggle('is-empty', !label);
+      } else {
+        when.textContent = 'No date selected yet';
+        when.classList.add('is-empty');
+      }
+
       $('hDateTime').value = (state.date ? shortDate(new Date(
         +state.date.split('-')[0], +state.date.split('-')[1] - 1, +state.date.split('-')[2]
       )) : 'Not set') + (label ? ' at ' + label : '');
